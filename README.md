@@ -28,25 +28,25 @@ A full-stack AI workspace platform featuring Retrieval-Augmented Generation (RAG
 ## 🖥️ Screenshots
 
 ### Login Portal
-![Login Portal](screenshots/Screenshot_2026-08-17_134814.jpg)
+![Login Portal](Screenshot%202026-08-17%20134814.png)
 
 ### Start New Chat
-![Start New Chat](screenshots/Screenshot_2026-08-17_134848.png)
+![Start New Chat](Screenshot%202026-08-17%20134848.png)
 
 ### Conversation View
-![Conversation View](screenshots/Screenshot_2026-08-17_134909.png)
+![Conversation View](Screenshot%202026-08-17%20134909.png)
 
 ### Knowledge Sources Panel
-![Knowledge Sources Panel](screenshots/Screenshot_2026-08-17_134925.png)
+![Knowledge Sources Panel](Screenshot%202026-08-17%20134925.png)
 
 ### Workspace Dashboard & RAG Chat
-![Dashboard](screenshots/Screenshot_2026-08-17_134945.png)
+![Dashboard](Screenshot%202026-08-17%20134945.png)
 
 ### Voice Interaction Mode
-![Voice Mode](screenshots/Screenshot_2026-08-17_135000.jpg)
+![Voice Mode](Screenshot%202026-08-17%20135000.png)
 
 ### Topic Media Explanation
-![Topic Media Explanation](screenshots/Screenshot_2026-08-17_135018.jpg)
+![Topic Media Explanation](Screenshot%202026-08-17%20135018.png)
 
 ## 🛠️ Tech Stack
 
@@ -63,20 +63,27 @@ A full-stack AI workspace platform featuring Retrieval-Augmented Generation (RAG
 
 ### Project Structure
 ```bash
-ai-copilot-general/
-└── ai-officer-copilot-integrated/
-    ├── screenshots/                  # Preview images for documentation
-    ├── backend/                      # Node.js + Express REST & WebSocket API
-    │   ├── generated/                # Output directory for compiled documents
-    │   ├── node_modules/             # Dependencies (pdf-parse, bcrypt, canvas)
-    │   ├── .env                      # Local environment configuration
-    │   ├── .env.example              # Environment variable template
-    │   ├── .gitignore
-    │   ├── package.json
-    │   └── server.js                 # Main Express & WebSocket entry point
-    └── frontend/                     # React + Vite client application
-        ├── public/
-        ├── src/
-        ├── .gitignore
-        ├── package.json
-        └── vite.config.js
+ai-officer-copilot-integrated/
+├── backend/                      # Node.js + Express REST & WebSocket API
+│   ├── generated/                # Output directory for compiled documents
+│   ├── node_modules/             # Dependencies (pdf-parse, bcrypt, canvas)
+│   ├── .env                      # Local environment configuration
+│   ├── .env.example              # Environment variable template
+│   ├── .gitignore
+│   ├── package.json
+│   └── server.js                 # Main Express & WebSocket entry point
+├── frontend/                     # React + Vite client application
+│   ├── public/
+│   ├── src/
+│   ├── .gitignore
+│   ├── package.json
+│   └── vite.config.js
+├── .gitignore
+├── README                        # Project documentation
+├── Screenshot 2026-08-17 134814.png
+├── Screenshot 2026-08-17 134848.png
+├── Screenshot 2026-08-17 134909.png
+├── Screenshot 2026-08-17 134925.png
+├── Screenshot 2026-08-17 134945.png
+├── Screenshot 2026-08-17 135000.png
+└── Screenshot 2026-08-17 135018.png
