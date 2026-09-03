@@ -1,0 +1,6 @@
+import { Router } from 'express';import { load,save,uid,now } from '../db/store.js';const r=Router();
+r.get('/',(req,res)=>{const db=load();const chatId=req.query.chatId;res.json({tasks:db.tasks.filter(t=>t.userId===req.user.id&&(!chatId||t.chatId===chatId)).sort((a,b)=>(a.deadline||'9999').localeCompare(b.deadline||'9999'))})});
+r.post('/',(req,res)=>{const db=load();const t={id:uid(),userId:req.user.id,chatId:req.body?.chatId||null,title:req.body?.title||'Untitled task',owner:req.body?.owner||'',deadline:req.body?.deadline||'',priority:req.body?.priority||'Medium',status:req.body?.status||'Pending',createdAt:now()};db.tasks.push(t);save(db);res.status(201).json(t)});
+r.patch('/:id',(req,res)=>{const db=load();const t=db.tasks.find(x=>x.id===req.params.id&&x.userId===req.user.id);if(!t)return res.status(404).json({message:'Task not found'});for(const k of['title','owner','deadline','priority','status'])if(req.body?.[k]!==undefined)t[k]=req.body[k];save(db);res.json(t)});
+r.delete('/:id',(req,res)=>{const db=load();const t=db.tasks.find(x=>x.id===req.params.id&&x.userId===req.user.id);if(!t)return res.status(404).json({message:'Task not found'});db.tasks=db.tasks.filter(x=>x.id!==t.id);save(db);res.json({ok:true})});
+export default r;

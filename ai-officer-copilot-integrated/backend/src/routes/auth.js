@@ -1,0 +1,5 @@
+import{Router}from'express';import bcrypt from'bcryptjs';import jwt from'jsonwebtoken';import{load,save}from'../db/store.js';import{auth}from'../middleware/auth.js';
+const r=Router();const sign=u=>jwt.sign({id:u.id,name:u.name,email:u.email},process.env.JWT_SECRET||'dev-secret',{expiresIn:'7d'});
+r.post('/register',async(req,res)=>{const{name,email,password}=req.body||{};if(!name||!email||!password)return res.status(400).json({message:'name, email and password are required'});const db=load();if(db.users.some(u=>u.email===email))return res.status(409).json({message:'Email already registered'});const u={id:crypto.randomUUID(),name,email,password:await bcrypt.hash(password,10)};db.users.push(u);save(db);res.json({token:sign(u),user:{id:u.id,name,email}})});
+r.post('/login',async(req,res)=>{const{email,password}=req.body||{};const db=load(),u=db.users.find(x=>x.email===email);if(!u||!await bcrypt.compare(password,u.password))return res.status(401).json({message:'Invalid credentials'});res.json({token:sign(u),user:{id:u.id,name:u.name,email:u.email}})});
+r.get('/me',auth,(req,res)=>res.json({user:req.user}));export default r;
